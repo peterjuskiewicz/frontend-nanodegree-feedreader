@@ -68,8 +68,8 @@ $(function() {
          */
 
         it('Element hidden be default', function(){
-            expect($('body').className).toBe('menu-hidden')
-        })
+            expect($('body').attr('class')).toBe('menu-hidden');
+        });
 
         /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
@@ -80,16 +80,14 @@ $(function() {
         it('Element visible on the first click', function(){
 
             $('.menu-icon-link').trigger('click');
-            expect($('body').className).not.toBe('menu-hidden');
-            // $('.menu-icon-link').trigger('click');
-            // expect(body.className).toBe('menu-hidden');
+            expect($('body').attr('class')).not.toBe('menu-hidden');
 
         });
 
         it('Element invisible on the second click', function(){
 
             $('.menu-icon-link').trigger('click');
-            expect($('body').className).toBe('menu-hidden');
+            expect($('body').attr('class')).toBe('menu-hidden');
 
         });
 
@@ -136,20 +134,11 @@ $(function() {
     describe('New Feed Selection', function() {
         var bodyBefore;
         beforeEach(function(done){
+            bodyBefore = $('body').children();
 
             loadFeed(0, done);
 
-            bodyBefore = $('body').children();
 
-            $('.feed-list').on('click', 'a', function() {
-            var item = $(this);
-
-            $('body').addClass('menu-hidden');
-            loadFeed(item.data('id'));
-            return false;
-            });
-
-            $('.feed-list').trigger('click');
 
 
         });
