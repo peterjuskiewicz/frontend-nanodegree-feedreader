@@ -45,6 +45,14 @@ $(function() {
          * and that the name is not empty.
          */
 
+         it('Name defined', function(){
+            allFeeds.forEach((item) => {
+                expect(item.name).toBeDefined();
+                expect(item.name.length).not.toBe(0);
+            });
+
+         });
+
 
     });
 
