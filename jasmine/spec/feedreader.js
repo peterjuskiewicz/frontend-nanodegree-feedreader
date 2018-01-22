@@ -133,8 +133,33 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
 
-    // describe('New Feed Selection', function() {
+    describe('New Feed Selection', function() {
+        var bodyBefore;
+        beforeEach(function(done){
 
-    // })
+            loadFeed(0, done);
+
+            bodyBefore = $('body').children();
+
+            $('.feed-list').on('click', 'a', function() {
+            var item = $(this);
+
+            $('body').addClass('menu-hidden');
+            loadFeed(item.data('id'));
+            return false;
+            });
+
+            $('.feed-list').trigger('click');
+
+
+        });
+
+        it('should change the content', function(done){
+            var bodyAfter = $('body').children();
+            expect(bodyBefore).not.toBe(bodyAfter);
+            done();
+        })
+
+    });
 
 }());
