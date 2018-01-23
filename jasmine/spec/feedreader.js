@@ -147,7 +147,7 @@ $(function() {
             var bodyAfter = $('body').children();
             expect(bodyBefore).not.toBe(bodyAfter);
             done();
-        })
+        });
 
     });
 
